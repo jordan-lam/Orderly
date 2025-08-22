@@ -1,0 +1,18 @@
+version: "1.0"
+
+services:
+  web:
+    build: .
+    container_name: orderly_fastapi
+    ports:
+      - "8000:8000" 
+    depends_on:
+      - redis
+    env_file:
+      - .env
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"  
