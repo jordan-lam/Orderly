@@ -21,14 +21,11 @@ The current version implements **3 core endpoints**:
 
 ## Planned Features / Next Steps
 
-1. **Dockerization**  
-   - Containerize FastAPI + Redis for easy deployment.
-
-2. **Queue Safeguards**  
+1. **Queue Safeguards**  
    - Add timestamps for analytics and auditing.  
    - Prevent “double dipping” (users joining multiple times).
 
-3. **Dashboard / Admin Interface**  
+2. **Dashboard / Admin Interface**  
    - Monitor queue in real-time, manage flow, and visualize statistics.
 
 ---
@@ -38,6 +35,10 @@ The current version implements **3 core endpoints**:
 1. Clone the repository:  
 git clone <repo_url>
 2. Install dependencies:
-pip install -r requirements.txt
-3. Start Redis (via Docker or local instance) and run Fast API
-uvicorn app.main:app -reload
+Install Docker
+https://docs.docker.com/engine/install/
+3. Run App Container:
+Startup:
+- docker-compose up --build
+Shutdown:
+- docker-compose down

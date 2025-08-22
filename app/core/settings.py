@@ -1,9 +1,5 @@
-from pydantic_settings import BaseSettings
+import os
 
-class Settings(BaseSettings):
-    redis_url: str = "redis://localhost:6379/0"
-
-    class Config:
-        env_file = ".env"
-
-settings = Settings()
+REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379")
+FASTAPI_HOST = os.getenv("FASTAPI_HOST", "0.0.0.0")
+FASTAPI_PORT = int(os.getenv("FASTAPI_PORT", 8000))
