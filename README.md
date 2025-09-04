@@ -32,13 +32,36 @@ The current version implements **3 core endpoints**:
 
 ## Getting Started (MVP)
 
-1. Clone the repository:  
-git clone <repo_url>
-2. Install dependencies:
-Install Docker
-https://docs.docker.com/engine/install/
-3. Run App Container:
-Startup:
-- docker-compose up --build
-Shutdown:
-- docker-compose down
+1. **Clone the repository:**
+   ```bash
+   git clone <repo_url>
+   cd Orderly
+   ```
+
+2. **Install Docker:**
+   Install Docker from https://docs.docker.com/engine/install/
+
+3. **Create environment file:**
+   Create a `.env` file in the project root with the following content:
+   ```bash
+   REDIS_URL=redis://redis:6379
+   FASTAPI_HOST=0.0.0.0
+   FASTAPI_PORT=8000
+   ```
+
+4. **Run the application:**
+   
+   **Startup:**
+   ```bash
+   docker-compose up --build
+   ```
+   
+   **Shutdown:**
+   ```bash
+   docker-compose down
+   ```
+
+5. **Test the API:**
+   ```bash
+   curl http://localhost:8000/api/v1/health/
+   ```
