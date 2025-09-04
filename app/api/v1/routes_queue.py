@@ -1,16 +1,14 @@
 from fastapi import APIRouter, HTTPException
-from app.core.redis_client import get_redis_client
 from app.models.queue import JoinQueueRequest, JoinQueueResponse, CheckQueueResponse, LeaveQueueResponse
 from app.services.queue_manager import join_queue, check_position, next_user
 
 router = APIRouter()
-    
+
 # Add a user to the queue
 @router.post("/join", response_model=JoinQueueResponse)
 def join_line(request: JoinQueueRequest):
     position = join_queue(request.user_id)
     return JoinQueueResponse(message="Joined queue",user_id=request.user_id, position=position)
-    
 
 # Check position in queue
 @router.get("/status/{user_id}", response_model=CheckQueueResponse)

@@ -2,6 +2,7 @@ from app.core.redis_client import get_redis_client
 
 QUEUE_NAME = "buyer_queue"
 
+
 def join_queue(user_id: str) -> int:
     """
     Add the user to the queue and return their position
@@ -13,6 +14,7 @@ def join_queue(user_id: str) -> int:
     position = client.llen(QUEUE_NAME)
 
     return position
+
 
 def check_position(user_id: str) -> int:
     """
@@ -27,6 +29,7 @@ def check_position(user_id: str) -> int:
         return queue.index(user_id) + 1
     except ValueError:
         return None
+
 
 def next_user() -> str:
     """
